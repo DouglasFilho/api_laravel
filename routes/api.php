@@ -18,8 +18,9 @@ use \App\Http\Controllers\UserController;
 
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-  return $request->user();
-});
+Route::apiResource('user', UserController::class)
+  ->only(['index', 'show']);
 
-Route::apiResource('user', UserController::class);
+Route::apiResource('user', UserController::class)
+  ->only(['store', 'update'])
+  ->middleware('auth:sanctum');
