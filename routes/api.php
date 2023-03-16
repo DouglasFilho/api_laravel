@@ -16,11 +16,22 @@ use \App\Http\Controllers\UserController;
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Unauthenticated Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::post('/login', [LoginController::class, 'login']);
 
 Route::apiResource('user', UserController::class)
-  ->only(['index', 'show']);
+  ->only(['store']);
 
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes
+|--------------------------------------------------------------------------
+*/
 Route::apiResource('user', UserController::class)
-  ->only(['store', 'update'])
+  ->only(['index', 'show', 'update'])
   ->middleware('auth:sanctum');

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Resources\UserResource;
-
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -20,7 +20,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
       $user = User::where('email', $request->email)->first();
 
@@ -32,7 +32,7 @@ class UserController extends Controller
       
       User::create($userData);
       
-      return response()->json([ 'message' => 'Usuário cadastrado com sucesso!']);
+      return response()->json([ 'message' => 'Usuário cadastrado com sucesso!'], 201);
     }
 
     /**
@@ -46,7 +46,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {      
       $user = User::where('id', $id)->first();
       if(!$user)
