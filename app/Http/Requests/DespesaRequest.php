@@ -20,7 +20,7 @@ class DespesaRequest extends CustomRulesRequest
       return [
         "id_usuario"  => "required|exists:users,id",
         "data"        => "required|date_format:Y-m-d|before:today",
-        "valor"       => ['required','regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/'],
+        "valor"       => ['required','regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/', 'gt:0'],
         "descricao"   => "required|string|max:191"
       ];
     }   
