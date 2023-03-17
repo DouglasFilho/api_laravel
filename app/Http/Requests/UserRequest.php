@@ -31,7 +31,8 @@ class UserRequest extends CustomRulesRequest
       ];
     }   
 
-    public function messages(){
+    public function messages() : array
+    {
       return [
         'required' => 'O campo :attribute é obrigatório!',
         'email' => 'O campo :attribute deve ser um email válido!',

@@ -35,7 +35,8 @@ class DespesaRequest extends CustomRulesRequest
       ];
     }   
 
-    public function messages(){
+    public function messages() :array
+    {
       return [
         'required' => 'O campo :attribute é obrigatório!',
         'date_format' => 'O campo :attribute deve ter o formato Y-m-d!',

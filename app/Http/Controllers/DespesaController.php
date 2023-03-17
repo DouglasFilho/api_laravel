@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Despesa;
+use App\Models\User;
 use App\Http\Resources\DespesaResource;
 use App\Http\Requests\DespesaRequest;
+Use App\Http\Controllers\EmailController;
+
 
 class DespesaController extends Controller
 {
@@ -24,6 +27,7 @@ class DespesaController extends Controller
     public function store(DespesaRequest $request)
     {
       Despesa::create($request->all());
+      (new EmailController)->sendEmail(User::where('id', $request->id_usuario)->first());
       return response()->json([ 'message' => 'Despesa cadastrada com sucesso!'], 201);
     }
 
