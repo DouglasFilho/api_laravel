@@ -33,7 +33,7 @@ Route::apiResource('user', UserController::class)
 |--------------------------------------------------------------------------
 */
 Route::apiResource('user', UserController::class)
-  ->only(['index', 'show', 'update'])
+  ->only(['index', 'show', 'update', 'destroy'])
   ->middleware('auth:sanctum');
 
 Route::apiResource('despesa', DespesaController::class)

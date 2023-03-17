@@ -75,6 +75,6 @@ class UserController extends Controller
         return response()->json([ 'message' => 'Usuário não existente!']);
       
       $user->delete();
-      return response()->json([ 'message' => 'Usuário deletada com sucesso!']);
+      return response()->json([ 'message' => 'Usuário deletado com sucesso!']);
     }
 }
