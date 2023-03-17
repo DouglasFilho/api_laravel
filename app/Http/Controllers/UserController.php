@@ -64,4 +64,17 @@ class UserController extends Controller
       $user->save();
       return response()->json([ 'message' => 'Usuário atualizado com sucesso!']);
     }
+    
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+      $user = User::where('id', $id)->first();
+      if(!$user)
+        return response()->json([ 'message' => 'Usuário não existente!']);
+      
+      $user->delete();
+      return response()->json([ 'message' => 'Usuário deletada com sucesso!']);
+    }
 }
