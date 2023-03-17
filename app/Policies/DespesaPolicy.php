@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\User;
 use App\Models\Despesa;
+use Illuminate\Auth\Access\Response;
 
 
 class DespesaPolicy
@@ -17,6 +18,8 @@ class DespesaPolicy
     }
 
     public function editarDespesa(User $user, Despesa $despesa){
-      return $user->id === $despesa->id_usuario;
+      return $despesa->id_usuario === $user->id 
+                 ? Response::allow() 
+                 : Response::deny('Essa despesa não pertence a esse usuário!');
     }
 }

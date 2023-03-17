@@ -19,7 +19,7 @@ class DespesaRequest extends CustomRulesRequest
     {
       return [
         "id_usuario"  => "required|exists:users,id",
-        "data"        => "required|date_format:Y-m-d|before:tomorrow",
+        "data"        => "required|date_format:Y-m-d|before:today",
         "valor"       => "required|numeric|gt:0",
         "descricao"   => "required|string|max:191"
       ];
@@ -34,4 +34,17 @@ class DespesaRequest extends CustomRulesRequest
         "descricao"   => "string|max:191"
       ];
     }   
+
+    public function messages(){
+      return [
+        'required' => 'O campo :attribute é obrigatório!',
+        'date_format' => 'O campo :attribute deve ter o formato Y-m-d!',
+        'before' => 'O campo :attribute deve ser anterior a hoje!',
+        'numeric' => 'O campo :attribute deve ser do tipo numérico!',
+        'string' => 'O campo :attribute deve ser do tipo string!',
+        'gt' => 'O campo :attribute deve ser maior que zero!',
+        'max' => 'O campo :attribute deve ter no máximo 191 caracteres!',
+        'exists' => 'O :attribute não existe!'
+      ];
+    }
 }
