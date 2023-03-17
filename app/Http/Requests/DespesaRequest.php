@@ -20,7 +20,7 @@ class DespesaRequest extends CustomRulesRequest
       return [
         "id_usuario"  => "required|exists:users,id",
         "data"        => "required|date_format:Y-m-d|before:today",
-        "valor"       => ['required','regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/', 'gt:0'],
+        "valor"       => ['required','regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/'],
         "descricao"   => "required|string|max:191"
       ];
     }   
@@ -42,10 +42,9 @@ class DespesaRequest extends CustomRulesRequest
         'before' => 'O campo :attribute deve ser anterior a hoje!',
         'numeric' => 'O campo :attribute deve ser do tipo numérico!',
         'string' => 'O campo :attribute deve ser do tipo string!',
-        'gt' => 'O campo :attribute deve ser maior que zero!',
         'max' => 'O campo :attribute deve ter no máximo 191 caracteres!',
         'exists' => 'O :attribute não existe!',
-        'valor.regex' => 'O campo :attribute deve seguir o padrao brasileiro de valor sem siglas. Ex: 1.234,56',
+        'valor.regex' => 'O campo :attribute deve seguir o padrao brasileiro de valor sem siglas e deve ser positivo. Ex: 1.234,56',
       ];
     }
 }
