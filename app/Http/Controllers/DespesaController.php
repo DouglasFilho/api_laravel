@@ -32,7 +32,12 @@ class DespesaController extends Controller
      */
     public function show(string $id)
     {
-      return new DespesaResource(Despesa::findOrFail($id));
+      $despesa = Despesa::where('id', $id)->first();
+
+      if(!$despesa)
+        return response()->json([ 'message' => 'Despesa não existente!']);
+
+      return new DespesaResource(Despesa::findOrFail($id));;
     }
 
     /**

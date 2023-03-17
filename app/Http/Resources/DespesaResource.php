@@ -4,6 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Models\User;
+use App\Http\Resources\UserResource;
 
 class DespesaResource extends JsonResource
 {
@@ -15,10 +17,10 @@ class DespesaResource extends JsonResource
     public function toArray(Request $request): array
     {
       return [
-        'id'    => $this->id,
+        'id'          => $this->id,
         'descricao'   => $this->descricao,
         'data'        => $this->data,
-        'id_usuario'  => $this->id_usuario,
+        'usuario'     => new UserResource(User::findOrFail($this->id)),
         'valor'       => $this->valor
       ];
     }
