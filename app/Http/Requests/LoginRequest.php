@@ -27,4 +27,12 @@ class LoginRequest extends FormRequest
             'password' => 'required'
         ];
     }
+
+    public function messages(): array
+    {
+      return [
+        'required' => 'O campo :attribute é obrigatório!',
+        'email' => 'O campo :attribute deve ser um email válido!',
+      ];
+    }
 }

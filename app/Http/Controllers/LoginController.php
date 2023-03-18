@@ -14,7 +14,7 @@ class LoginController extends Controller
       $credentials = $request->only('email', 'password');
 
       if(!auth()->attempt($credentials)) 
-        return response()->json('Credenciais invalidas', 401);
+        return response()->json(["message" => 'Credenciais invalidas'], 401);
 
       $token = auth()->user()->createToken('JTW');
       return response()->json(["token" => $token->plainTextToken], 202);
