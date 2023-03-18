@@ -20,7 +20,7 @@ class DespesaResource extends JsonResource
         'id'          => $this->id,
         'descricao'   => $this->descricao,
         'data'        => $this->data,
-        'usuario'     => new UserResource(User::findOrFail($this->id)),
+        'usuario'     => new UserResource(User::findOrFail($this->id_usuario)),
         'valor'       => $this->valor
       ];
     }
