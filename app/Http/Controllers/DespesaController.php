@@ -41,7 +41,7 @@ class DespesaController extends Controller
       if(!$despesa)
         return response()->json([ 'message' => 'Despesa não existente!']);
 
-      return new DespesaResource(Despesa::findOrFail($id));;
+      return new DespesaResource($despesa);;
     }
 
     /**

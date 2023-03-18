@@ -17,7 +17,8 @@ class DespesaPolicy
         //
     }
 
-    public function editarDespesa(User $user, Despesa $despesa){
+    public function editarDespesa(User $user, Despesa $despesa)
+    {
       return $despesa->id_usuario === $user->id 
                  ? Response::allow() 
                  : Response::deny('Essa despesa não pertence a esse usuário!');
