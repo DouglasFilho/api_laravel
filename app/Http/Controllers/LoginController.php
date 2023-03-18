@@ -17,7 +17,7 @@ class LoginController extends Controller
         return response()->json('Credenciais invalidas', 401);
 
       $token = auth()->user()->createToken('JTW');
-      return response()->json($token->plainTextToken, 202);
+      return response()->json(["token" => $token->plainTextToken], 202);
     }
 
 }
