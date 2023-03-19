@@ -29,8 +29,8 @@ class DespesaRequest extends CustomRulesRequest
     {
       return [
         "id_usuario"  => "exists:users,id",
-        "data"        => "date_format:Y-m-d|before:tomorrow",
-        "valor"       => "numeric|gt:0",
+        "data"        => "date_format:Y-m-d|before:today",
+        "valor"       => ['regex:/^(\d{1,3}(\.\d{3})*|\d+)(,\d{2})?$/'],
         "descricao"   => "string|max:191"
       ];
     }   

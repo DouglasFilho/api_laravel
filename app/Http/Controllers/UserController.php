@@ -40,6 +40,10 @@ class UserController extends Controller
      */
     public function show(String $id)
     {
+      $user = User::where('id', $id)->first();
+      if(!$user)
+        return response()->json([ 'message' => 'Usuário não existente!']);
+        
       return new UserResource(User::findOrFail($id));
     }
 
